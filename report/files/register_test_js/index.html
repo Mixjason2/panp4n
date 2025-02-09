@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - register.test.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>register.test.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">64.59</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">120</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">23.11</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.39</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">const assert = require(&quot;assert&quot;);
+const { Builder, By, Key, until } = require(&quot;selenium-webdriver&quot;);
+const { JSDOM } = require(&quot;jsdom&quot;);
+const dom = new JSDOM(&quot;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;&quot;);
+global.document = dom.window.document;
+
+jest.setTimeout(30000); // เพิ่ม timeout ที่ 30 วินาที
+
+describe(&quot;Perform Registration&quot;, function () {
+  it(&quot;Check if you can register the account&quot;, async function () {
+    let driver = await new Builder().forBrowser(&quot;chrome&quot;).build();
+    try {
+
+      await driver.get(&quot;file:///C:/Users/taobo/panp4n/register.html&quot;);
+      // ทดสอบกรณีที่การสมัครสำเร็จ
+      await driver.findElement(By.id(&quot;username&quot;)).sendKeys(&quot;test01&quot;);
+      await driver.findElement(By.id(&quot;email&quot;)).sendKeys(&quot;test01@g.swu.ac.th&quot;);
+      await driver.findElement(By.id(&quot;password&quot;)).sendKeys(&quot;111111&quot;);
+      await driver.findElement(By.id(&quot;password_confirm&quot;)).sendKeys(&quot;111111&quot;);
+      await driver.findElement(By.id(&quot;submitbtt&quot;)).click();
+      await driver.wait(until.alertIsPresent(), 10000);
+
+      let alert = await driver.switchTo().alert();
+      let alertText = await alert.getText();
+      expect(alertText).toBe(&quot;Account created successfully&quot;);
+
+      await alert.accept();
+
+    } finally {
+      await driver.quit();
+    }
+  });
+});
+
+describe(&quot;checkPasswordMatch function&quot;, function () {
+  it(&quot;should show error message if passwords do not match&quot;, async function () {
+    let driver = await new Builder().forBrowser(&quot;chrome&quot;).build();
+    try {
+      await driver.get(&quot;file:///C:/Users/taobo/panp4n/register.html&quot;);
+
+      // รอให้ element ที่มี id เป็น &quot;password&quot; โหลดเสร็จสมบูรณ์
+      await driver.wait(until.elementLocated(By.id(&quot;password&quot;)), 5000);
+
+      // เตรียมข้อมูลสำหรับทดสอบ
+      await driver.findElement(By.id(&quot;username&quot;)).sendKeys(&quot;test01&quot;);
+      await driver.findElement(By.id(&quot;email&quot;)).sendKeys(&quot;test01@g.swu.ac.th&quot;);
+      await driver.findElement(By.id(&quot;password&quot;)).sendKeys(&quot;123456&quot;);
+      await driver.findElement(By.id(&quot;password_confirm&quot;)).sendKeys(&quot;111111&quot;);
+      await driver.findElement(By.id(&quot;submitbtt&quot;)).click();
+      // รอให้ Element ที่แสดงข้อความผิดพลาดโหลดเสร็จสมบูรณ์
+      await driver.wait(until.elementLocated(By.className(&quot;form-control error&quot;)), 5000);
+
+      // ตรวจสอบข้อความผิดพลาดที่แสดงบนหน้าเว็บ
+      let errorMessageElement = await driver.findElement(By.className(&quot;form-control error&quot;));
+      let errorMessage = await errorMessageElement.getText();
+      expect(errorMessage).toContain(&quot;Passwords do not match&quot;);
+      console.log(errorMessage);
+    } finally {
+      await driver.quit();
+    }
+  });
+});
+
+describe(&quot;checkLength min version function&quot;, function () {
+  it(&quot;should show error message if length of passwords lower than 6&quot;, async function () {
+    let driver = await new Builder().forBrowser(&quot;chrome&quot;).build();
+    try {
+      await driver.get(&quot;file:///C:/Users/taobo/panp4n/register.html&quot;);
+
+      // รอให้ element ที่มี id เป็น &quot;password&quot; โหลดเสร็จสมบูรณ์
+      await driver.wait(until.elementLocated(By.id(&quot;password&quot;)), 5000);
+
+      // เตรียมข้อมูลสำหรับทดสอบ
+      await driver.findElement(By.id(&quot;username&quot;)).sendKeys(&quot;test01&quot;);
+      await driver.findElement(By.id(&quot;email&quot;)).sendKeys(&quot;test01@g.swu.ac.th&quot;);
+      await driver.findElement(By.id(&quot;password&quot;)).sendKeys(&quot;123&quot;);
+      await driver.findElement(By.id(&quot;password_confirm&quot;)).sendKeys(&quot;123&quot;);
+      await driver.findElement(By.id(&quot;submitbtt&quot;)).click();
+      // รอให้ Element ที่แสดงข้อความผิดพลาดโหลดเสร็จสมบูรณ์
+      await driver.wait(until.elementLocated(By.className(&quot;form-control error&quot;)), 5000);
+
+      // ตรวจสอบข้อความผิดพลาดที่แสดงบนหน้าเว็บ
+      let errorMessageElement = await driver.findElement(By.className(&quot;form-control error&quot;));
+      let errorMessage = await errorMessageElement.getText();
+      expect(errorMessage).toContain(&quot;Password must be at least 6 characters&quot;);
+      console.log(errorMessage);
+    } finally {
+      await driver.quit();
+    }
+  });
+});
+
+describe(&quot;checkLength max version function&quot;, function () {
+  it(&quot;should show error message if length of passwords higher than 16&quot;, async function () {
+    let driver = await new Builder().forBrowser(&quot;chrome&quot;).build();
+    try {
+      await driver.get(&quot;file:///C:/Users/taobo/panp4n/register.html&quot;);
+
+      // รอให้ element ที่มี id เป็น &quot;password&quot; โหลดเสร็จสมบูรณ์
+      await driver.wait(until.elementLocated(By.id(&quot;password&quot;)), 5000);
+
+      // เตรียมข้อมูลสำหรับทดสอบ
+      await driver.findElement(By.id(&quot;username&quot;)).sendKeys(&quot;test01&quot;);
+      await driver.findElement(By.id(&quot;email&quot;)).sendKeys(&quot;test01@g.swu.ac.th&quot;);
+      await driver.findElement(By.id(&quot;password&quot;)).sendKeys(&quot;12345678910111213&quot;);
+      await driver.findElement(By.id(&quot;password_confirm&quot;)).sendKeys(&quot;12345678910111213&quot;);
+      await driver.findElement(By.id(&quot;submitbtt&quot;)).click();
+      // รอให้ Element ที่แสดงข้อความผิดพลาดโหลดเสร็จสมบูรณ์
+      await driver.wait(until.elementLocated(By.className(&quot;form-control error&quot;)), 5000);
+
+      // ตรวจสอบข้อความผิดพลาดที่แสดงบนหน้าเว็บ
+      let errorMessageElement = await driver.findElement(By.className(&quot;form-control error&quot;));
+      let errorMessage = await errorMessageElement.getText();
+      expect(errorMessage).toContain(&quot;Password must be less than 16 characters&quot;);
+      console.log(errorMessage);
+    } finally {
+      await driver.quit();
+    }
+  });
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ cyclomatic }} <br>
+    Length : {{ halstead.length }} <br>
+    Difficulty : {{ halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

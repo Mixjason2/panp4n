@@ -1,0 +1,302 @@
+.itim-regular {
+  font-family: "Itim", cursive;
+  font-weight: 400;
+  font-style: normal;
+  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Itim", sans-serif;
+  background-image: url("/images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.navbar {
+  display: flex;
+  position: sticky;
+  align-items: center;
+  justify-content: space-between;
+  top: 0px;
+  background-blend-mode: darken;
+  background-size: cover;
+  color: black;
+  padding: 10px 20px;
+}
+
+.navbar a {
+  color: black;
+}
+
+header {
+  font-size: 25px;
+  padding: 10px 20px;
+  color: black;
+  text-decoration: none;
+}
+
+header :link {
+  color: black;
+  text-decoration: none;
+}
+
+header :hover {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+}
+
+.nav-list li {
+  margin-right: 20px;
+}
+
+.nav-list li:last-child {
+  margin-right: 0;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-list li a:hover {
+  color: white;
+}
+
+.rightNav {
+  text-align: right;
+}
+
+#search {
+  padding: 8px;
+  font-size: 20px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  margin: 0 auto;
+  display: block;
+}
+
+.btn {
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #000;
+  color: #ffd700;
+}
+.purple-box {
+  background-color: rgb(219, 148, 255);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 85%;
+  margin: 0 auto;
+  border: 1px solid;
+  padding: 20px;
+  border-style: none;
+  border-radius: 25px;
+  padding: 20px;
+  position: relative;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: white;
+  border-style: none;
+  border-radius: 25px;
+  padding: 20px;
+  position: relative;
+}
+
+.left-side {
+  flex: 1;
+  text-align: center;
+  height: 340px;
+}
+
+.left-side img {
+  max-width: 100%;
+  height: auto;
+}
+
+.right-side {
+  flex: 1;
+  text-align: left;
+  padding-right: 0px;
+}
+
+.right-side input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.divider {
+  position: absolute;
+  height: 70%;
+  width: 0.5px;
+  background-color: white;
+  top: 10%;
+  left: 48%;
+  transform: translateX(-50%);
+}
+.love_text-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  
+}
+
+.love_text-container img {
+  width: 50px;
+  height: 45px;
+  border: none;
+  border-radius: 0px;
+}
+
+form.search-bar {
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+form.search-bar input[type="text"] {
+  font-family: "Itim", sans-serif;
+  padding: 20px;
+  font-size: 18px;
+  border: 1px solid black;
+  float: left;
+  width: 70%;
+  background: #f1f1f1;
+  border-style: none;
+  border-radius: 25px;
+  padding: 20px;
+  position: relative;
+}
+
+form.search-bar button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: rgb(253, 157, 173);
+  color: white;
+  font-size: 20px;
+  border: 1px solid rgb(225, 89, 205);
+  border-left: none;
+  cursor: pointer;
+  border-style: none;
+  border-radius: 25px;
+  padding: 20px;
+  position: relative;
+}
+
+form.search-bar button:hover {
+  background: rgb(169, 46, 222);
+}
+
+form.search-bar::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.comment-section {
+  left: 50%; /* Position at the center */
+  transform: translateX(-50%);
+  padding: 5vw; /* Use padding for spacing */
+  margin-top: 15vw;
+  border-radius: 10vw;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  gap: 10px;
+}
+
+.comment-section img {
+  width: 50px;
+  height: 45px;
+}
+
+.comment-section form {
+  margin-top: 10px; /* Add some space between the comments and the input field */
+}
+
+.comment-section textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px; /* Add some space between the input field and the button */
+}
+
+.comment-section button {
+  justify-content: center;
+  padding: 10px;
+  background: rgb(253, 157, 173);
+  color: white;
+  font-size: 16px; /* Reduce font size for better proportion */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; /* Add some space between the input field and the button */
+}
+
+.comment-section button:hover {
+  background: rgb(169, 46, 222);
+}
+
+.comments #text{
+   border: solid 5px rgb(255, 255, 255);
+  padding: 5px;
+  display: inline-block;
+  border-style: dotted;
+}
+
+#like.liked {
+  /* กำหนดสไตล์สำหรับสถานะไลค์เต็ม */
+  opacity: 0.5; /* เปลี่ยนความทึบของรูปภาพ */
+}
+
+
+.love_text-container {
+  display: flex;
+  align-items: center;
+}
+
+.love_text-container button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.love_text-container img {
+  margin: 0 5px; /* กำหนดระยะห่างระหว่างรูปภาพ */
+}
+#counter {
+  margin: 0 5px; /* กำหนดระยะห่างระหว่างตัวเลขกับหัวใจ */
+  font-size: 15px; /* กำหนดขนาดตัวเลขใหญ่ขึ้น */
+  font-weight: bold; /* ทำให้ตัวเลขหนาขึ้น */
+}

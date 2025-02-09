@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LearnHuff</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="/ContentPage/ContentPage.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Itim&family=Londrina+Solid:wght@300&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <nav class="navbar">
+    <header><a href="/index.html">LearnHuff</a></header>
+    <!-- add link -->
+    <ul class="nav-list">
+      <li><a href="/index.html">Learn Huff คืออะไร</a></li>
+      <li><a href="">|</a></li>
+      <li><a href="/categorypage.html">หมวดหมู่</a></li>
+    </ul>
+  </nav>
+
+  <!--search-->
+  <form class="search-bar" action="#" method="GET" onsubmit="return handleSearch()">
+    <input type="text" list="search-suggestions" autocomplete="off" placeholder="ค้นหาความรู้ที่สนใจ!" name="search" />
+    <button type="submit"><i class="fa fa-search"></i></button>
+    <datalist id="search-suggestions"></datalist>
+  </form>
+  <script src="/search.js"></script>
+
+  <br />
+  <div class="purple-box">
+    <div class="container" id="showContentHere">
+
+    </div>
+
+    <div class="love_text-container">
+      <button type="button" onclick="like()">
+        <img src="/images/heart.png" id="counter" />
+        <span id="currentLikes"></span>
+      </button>
+      <br />
+      <img src="/images/comment.png" alt="heart.png" width="50" height="45" />
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/like.js"></script>
+  <script src="ContentPage.js"></script>
+</body>
+<script>
+  function like() {
+    // เพิ่มจำนวนไลค์
+    let currentLikes = parseInt(localStorage.getItem("likes")) || 0;
+    currentLikes++;
+    document.getElementById("counter").textContent = currentLikes;
+    document.getElementById("currentLikes").textContent = currentLikes;
+
+    // บันทึกจำนวนไลค์ลงใน Local Storage
+    localStorage.setItem("likes", currentLikes.toString());
+  }
+</script>
+
+</html>

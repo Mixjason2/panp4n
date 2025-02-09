@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="register.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Itim&family=Londrina+Solid:wght@300&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <nav class="navbar">
+    <header>LearnHuff</header>
+    <ul class="nav-list">
+      <li><a href="#">Learn Huff คืออะไร</a></li>
+      <li><a href="">|</a></li>
+      <li><a href="#">หมวดหมู่</a></li>
+    </ul>
+  </nav>
+  <div class="outer">
+    <div class="inner">
+      <!--ใส่ข้อความ กล่องขาว-->
+      <form id="register-form" method="POST">
+        <!--กลับมาใส่ action ด้วย-->
+
+        <div class="form-img">
+          <img src="images/witch_regis.png" alt="" />
+        </div>
+        <div class="register-form">
+          <div class="register">
+            <h1>ลงทะเบียน</h1>
+          </div>
+
+          <div class="form-control">
+            <label for="username"></label><span class="req">*</span>
+            <input type="text" name="username" id="username" placeholder="Type your username" />
+            <small class="error-message">Error Message</small>
+          </div>
+
+          <div class="form-control">
+            <label for="email"></label><span class="req">*</span>
+            <input type="email" name="email" id="email" placeholder="Type your email" />
+            <small class="error-message">Error Message</small>
+          </div>
+
+
+          <div class="form-control">
+            <label for="password"></label><span class="req">*</span>
+            <input type="password" name="password" id="password" placeholder="Type your password" />
+            <small class="error-message">Error Message</small>
+          </div>
+
+          <div class="form-control">
+            <label for="password_confirm"></label><span class="req">*</span>
+            <input type="password" name="password_confirm" id="password_confirm"
+              placeholder="Type confirm your password" />
+            <small class="error-message">Error Message</small>
+          </div>
+
+          <div id="submitbtt">
+            <input type="submit" value="Register Now" id="submit" />
+            <p class="account">
+              Already have an account? <a href="login.html">Sign up</a>
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
+  <script src="register.js" defer></script>
+</body>
+
+</html>

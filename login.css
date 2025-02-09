@@ -1,0 +1,292 @@
+.itim-regular {
+  font-family: "Itim", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Itim", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  font-family: "Itim", sans-serif;
+  background-image: url("images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.navbar {
+  display: flex;
+  position: sticky;
+  align-items: center;
+  justify-content: space-between;
+  top: 0px;
+  background-blend-mode: darken;
+  background-size: cover;
+  color: black;
+  padding: 10px 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+.navbar a {
+  color: black;
+}
+
+header {
+  font-size: 25px;
+  padding: 10px 20px;
+  color: black;
+  text-decoration: none;
+}
+
+header :link {
+  color: black;
+  text-decoration: none;
+}
+
+header :hover {
+  color: white;
+  text-decoration: none;
+}
+
+
+.nav-list {
+  display: flex;
+  list-style: none;
+}
+
+.nav-list li {
+  margin-right: 20px;
+}
+
+.nav-list li:last-child {
+  margin-right: 0;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-list li a:hover {
+  color: white;
+}
+
+.rightNav {
+  text-align: right;
+}
+
+
+.login-form{
+  position: relative;
+  min-height: 100vh;
+  z-index: 0;
+  padding: 40px;
+  justify-content: center;
+  display: grid;
+
+  grid-template-rows: 1fr auto 1fr;
+  align-items: center;
+}
+
+.container{
+  max-width: auto;
+  margin: 0 auto;
+}
+
+.login-form h3 {
+  line-height: 40px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.login-form h3{
+  line-height: 20px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 5000;
+  color:#5c5c5c;
+  text-align: center;
+}
+
+.login-form h2 {
+  line-height: 40px;
+  margin-bottom: 5px;
+  font-size: 32px;
+}
+
+.login-form h2{
+  line-height: 40px;
+  margin-bottom: 20px;
+  font-size: 35px;
+  font-weight: 500;
+  color:#000000;
+  text-align: center;
+}
+
+.login-form .main{
+  position: relative;
+  display: flex;
+  margin: 30px 0;
+}
+
+.content {
+  flex-basis: 70%;
+  padding: 3em 3em ;
+  background: #fff;
+  box-shadow: 2px 9px 49px -17px rgba(0,0,0,0.1);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+} 
+
+
+.form-img{
+  flex-basis: 60%;
+  background: rgba(255, 255, 255, 0.8);
+  background-size: cover;
+  padding: 40px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  align-items: center;
+  display: grid;
+}
+
+.form-img img{
+  max-width: 100%;
+}
+
+p{
+  color: #5c5c5c;
+  font-size: 16px;
+  line-height: 25px;
+  opacity: 0.6;
+  text-align: center;
+  margin-top: 10px ;
+  margin-bottom: 10px ;
+}
+
+.btn,button,input{
+  border-radius: 35px ;
+}
+
+.btn:hover{
+  transition: 0.5s ease;
+}
+
+a{
+  text-decoration: none;
+}
+
+.login-form form{
+  margin: 30px 0;
+}
+
+.login-form input{
+  outline: none;
+  margin-bottom: 18px;
+  font-size: 16px;
+  font-stretch: 18px;
+  color: #5c5c5c;
+  text-align: left;
+  padding: 18px 20px;
+  width: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+  border: none;
+  background: #f7fafc;
+  transition: 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.login-form input:focus{
+  background: transparent;
+  border: 1px solid #ec75dc;
+  transform: translateY(-7px);
+}
+
+.login-form input:valid {
+  border-color: #792dcf;
+}
+
+.login-form button{
+  font-size: 18px;
+  color: #fff;
+  width: 100%;
+  background: #666;
+  border: none;
+  padding: 14px 15px;
+  margin: 15px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.account a {
+  color: #792dcf;
+  text-decoration: none;
+}
+
+.account a:hover {
+  color: #4e34b6;
+  text-decoration: underline;
+}
+
+.input-box i {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(180%);
+  font-size: 20px;
+}
+
+.forgot {
+  display: flex;
+  padding: 20px 15px 10px 220px;
+  font-size: 18px;
+  margin-bottom: -50px;
+  color: #737373;
+}
+
+.forgot a {
+  color: #737373;
+  font-size: 18px;
+}
+
+.forgot a:hover {
+  color: white;
+  font-size: 18px;
+}
+
+.registerpage {
+  display: flex;
+  padding: 10px 15px 10px 200px;
+  color: #737373;
+}
+
+.registerpage a {
+  color: #737373;
+}
+
+.registerpage a:hover {
+  color: white;
+}
+
+.paccount a:hover{
+  color: #272346
+}
+

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homepage</title>
+  <link rel="stylesheet" href="homepage.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Itim&family=Londrina+Solid:wght@300&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar">
+    <header>LearnHuff</header>
+    <ul class="nav-list">
+      <li><a href="index.html">Learn Huff คืออะไร </a></li>
+      <li><a href="">|</a></li>
+      <li><a href="categorypage.html"> หมวดหมู่</a></li>
+    </ul>
+  </nav>
+
+  <head>
+
+    <!--search-->
+    <form class="search-bar" action="#" method="GET" onsubmit="return handleSearch()">
+      <input type="text" list="search-suggestions" autocomplete="off" placeholder="ค้นหาความรู้ที่สนใจ!" name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+      <datalist id="search-suggestions"></datalist>
+    </form>
+    <script src="/search.js"></script>
+    <script src="homepage_shuffle.js"></script>
+    <center>
+      <div class="content">
+        <div class="content-left">
+          <div class="info">
+            <h2><span>LearnHuff</span> คืออะไร</h2>
+            <p>เว็บไซต์ความรู้นอกชั้นเรียน เปรียบเสมือนห้องสมุดออนไลน์ที่รวบรวมความรู้ที่หลากหลาย
+              ครอบคลุมทั้งวิชาการ ทักษะชีวิต และความสนใจส่วนตัว โดยสามารถค้นหาข้อมูลที่ต้องการได้
+              อย่างรวดเร็ว ทุกที่ ทุกเวลา ไปค้นหาความรู้ที่สนใจกันเลย !</p>
+          </div>
+        </div>
+        <div class="content-right">
+          <img src="images/moonmagic.png" alt="">
+        </div>
+    </center>
+    </div>
+    <div class="reccom">
+      <h2>ความรู้แนะนำ</h2>
+    </div>
+    <div class="cards-container" id="cards"></div>
+
+    <script>
+      // Function to insert shuffled cards into the DOM
+      function insertShuffledCards() {
+        var dynamicCardsContainer = document.getElementById("cards");
+        console.log(shuffledCards)
+        shuffledCards.forEach(function (card) {
+          var cardDiv = document.createElement("div");
+          cardDiv.classList.add("cards");
+
+          var cardImage = document.createElement("img");
+          cardImage.src = card.image;
+
+          var cardContentDiv = document.createElement("div");
+          cardContentDiv.classList.add("cards-content");
+
+          var cardTitle = document.createElement("h3");
+          cardTitle.textContent = card.title;
+
+          var cardContent = document.createElement("p");
+          cardContent.textContent = card.content;
+
+          var cardLink = document.createElement("a");
+          cardLink.href = card.link;
+          cardLink.classList.add("btn");
+          cardLink.textContent = "อ่านเพิ่มเติม";
+
+          cardContentDiv.appendChild(cardTitle);
+          cardContentDiv.appendChild(cardContent);
+          cardContentDiv.appendChild(cardLink);
+
+          cardDiv.appendChild(cardImage);
+          cardDiv.appendChild(cardContentDiv);
+
+          dynamicCardsContainer.appendChild(cardDiv);
+        });
+      }
+
+      // Call the function to insert shuffled cards
+      insertShuffledCards();   
+    </script>
+  </head>
+</body>
+
+</html>

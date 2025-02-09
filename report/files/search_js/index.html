@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - search.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>search.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">52.15</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">74</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">14.37</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.92</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">function handleSearch() {
+    const searchQuery = document.querySelector(&#039;.search-bar input[name=&quot;search&quot;]&#039;).value.trim();
+    const topics = [
+        { query: &quot;วิธีการคำนวณภาษีเบื้องต้น&quot;, url: &quot;/ContentPage/TaxCalculation_page.html&quot;,section:&quot;Finance&quot;,detail:&quot;tax&quot;},
+        { query: &quot;มือใหม่เริ่มลงทุน&quot;, url: &quot;/ContentPage/Invest_page.html&quot;,section:&quot;Finance&quot;,detail:&quot;invest&quot; },
+        { query: &quot;การปฐมพยาบาลเบื้องต้น&quot;, url: &quot;/ContentPage/FirstAid_page.html&quot;,section:&quot;Healthy&quot;,detail:&quot;FirstAid&quot; },
+        { query: &quot;วิธีการจัดการความเครียด&quot;, url: &quot;/ContentPage/Stress_page.html&quot;,section:&quot;Healthy&quot;,detail:&quot;Stress&quot; },
+        { query: &quot;อวัยวะเหล่านี้กลัวอะไร?&quot;, url: &quot;/ContentPage/Organ_page.html&quot;,section:&quot;Healthy&quot;,detail:&quot;Organ&quot; },
+        { query: &quot;สุขภาพผิวดี ทำง่ายๆ&quot;, url: &quot;/ContentPage/SkinHealth_page.html&quot;,section:&quot;Healthy&quot;,detail:&quot;SkinHealth&quot; },
+        { query: &quot;ทักษะในการเขียนอีเมลเบื้องต้นในภาษาอังกฤษ&quot;, url: &quot;/ContentPage/WriteEmail_page.html&quot;,section:&quot;Communication&quot;,detail:&quot;WriteEmail&quot; },
+        { query: &quot;สำนวนภาษาอังกฤษน่ารู้ ได้ใช้บ่อยแน่!&quot;, url: &quot;/ContentPage/Vocab_page.html&quot;,section:&quot;Communication&quot;,detail:&quot;Vocab&quot; },
+        { query: &quot;เทคนิคการพูดโน้มน้าวใจ&quot;, url: &quot;/ContentPage/HowToSpeak_page.html&quot;,section:&quot;Communication&quot;,detail:&quot;HowtoSpeak&quot; },
+        { query: &quot;มารยาทตามหลักสากล&quot;, url: &quot;/ContentPage/Courtesy_page.html&quot;,section:&quot;Socializing&quot;,detail:&quot;Courtesy&quot; },
+        { query: &quot;วิธีสร้างความมั่นใจให้คนขี้อายกล้าเข้าสังคม&quot;, url: &quot;/ContentPage/Social_page.html&quot;,section:&quot;Socializing&quot;,detail:&quot;Social&quot; },
+        { query: &quot;เมนูมื้อเย็น ช่วงลดน้ำหนัก&quot;, url: &quot;/ContentPage/Menu_page.html&quot;,section:&quot;Food&quot;,detail:&quot;Menu&quot; },
+        { query: &quot;สารอาหารที่จำเป็นต่อร่างกาย&quot;, url: &quot;/ContentPage/Nutrient_page.html&quot;,section:&quot;Food&quot;,detail:&quot;Nutrient&quot; },
+        { query: &quot;กราฟคืออะไร&quot;, url: &quot;/ContentPage/GraphSum_page.html&quot;,section:&quot;Learning&quot;,detail:&quot;GraphSum&quot; },
+        { query: &quot;เรียนยังไง ให้ได้ 4.00&quot;, url: &quot;/ContentPage/Grade4_page.html&quot;,section:&quot;Learning&quot;,detail:&quot;Grade4&quot; },
+        { query: &quot;เคล็ดลับการบริหารเวลา&quot;, url: &quot;/ContentPage/ManageTime_page.html&quot;,section:&quot;Manage&quot;,detail:&quot;ManageTime&quot;},
+        { query: &quot;แชร์วิธีทำแพลนเที่ยว&quot;, url: &quot;/ContentPage/Plan_page.html&quot;,section:&quot;Manage&quot;,detail:&quot;Plan&quot;},
+        { query: &quot;กฎหมายเบื้องต้น&quot;, url: &quot;/ContentPage/Law_page.html&quot;,section:&quot;Other&quot;,detail:&quot;Law&quot;},
+        { query: &quot;วิธีเอาตัวรอดจากแผ่นดินไหว&quot;, url: &quot;/ContentPage/Earthquake_page.html&quot;,section:&quot;Other&quot;,detail:&quot;Earthquake&quot; },
+        { query: &quot;จัดกระเป๋าเดินทางไปต่างประเทศ&quot;, url: &quot;/ContentPage/Prepare_page.html&quot;,section:&quot;Other&quot;,detail:&quot;Prepare&quot; }
+
+    ];
+
+    const topic = topics.find(topic =&gt; topic.query === searchQuery);
+    if (topic) {
+        localStorage.setItem(&#039;section&#039;, topic.section);
+        localStorage.setItem(&#039;detail&#039;, topic.detail);
+        window.location.href = topic.url;
+        return false; // ป้องกันฟอร์มส่งค่าไปที่ URL ที่ระบุในแอททริบิวต์ action
+    } else {
+        alert(&quot;ขออภัย ไม่มีรายการที่ท่านต้องการค้นหา&quot;);
+        return false; // ส่งค่าฟอร์มไปที่ URL ที่ระบุในแอททริบิวต์ action
+    }
+}
+// เรียกใช้งานฟังก์ชัน showSearchSuggestions() เมื่อหน้าเว็บโหลด
+document.addEventListener(&quot;DOMContentLoaded&quot;, showSearchSuggestions)
+
+
+function showSearchSuggestions() {
+    const topics = [
+        &quot;วิธีการคำนวณภาษีเบื้องต้น&quot;,
+        &quot;มือใหม่เริ่มลงทุน&quot;,
+        &quot;การปฐมพยาบาลเบื้องต้น&quot;,
+        &quot;วิธีการจัดการความเครียด&quot;,
+        &quot;อวัยวะเหล่านี้กลัวอะไร?&quot;,
+        &quot;สุขภาพผิวดี ทำได้ง่ายๆ&quot;,
+        &quot;ทักษะในการเขียนอีเมลเบื้องต้นในภาษาอังกฤษ&quot;, 
+        &quot;สำนวนภาษาอังกฤษน่ารู้&quot;,
+        &quot;เทคนิคการพูดจาโน้มน้าวใจ&quot;,
+        &quot;มารยาทตามหลักสากล&quot;,
+        &quot;วิธีสร้างความมั่นใจให้คนขี้อาย&quot;,
+        &quot;เมนูมื้อเย็น ช่วงลดน้ำหนัก&quot;,
+        &quot;สารอาหารที่จำเป็นต่อร่างกาย&quot;,
+        &quot;กราฟคืออะไร&quot;,
+        &quot;เรียนยังไง ให้ได้ 4.00&quot;,
+        &quot;เคล็ดลับการบริหารเวลา&quot;,
+        &quot;แชร์วิธีทำแพลนเที่ยว&quot;,
+        &quot;กฎหมายเบื้องต้น&quot;,
+        &quot;วิธีเอาตัวรอดจากแผ่นดินไหว&quot;,
+        &quot;จัดกระเป๋าเดินทางไปต่างประเทศ&quot;
+    ];
+    const datalist = document.getElementById(&quot;search-suggestions&quot;);
+    datalist.innerHTML = &quot;&quot;; // เคลียร์ค่าที่อยู่ใน datalist ก่อนที่จะเพิ่มใหม่
+    topics.forEach(topic =&gt; {
+        const option = document.createElement(&quot;option&quot;);
+        option.value = topic;
+        datalist.appendChild(option);
+    });
+    
+
+};</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ cyclomatic }} <br>
+    Length : {{ halstead.length }} <br>
+    Difficulty : {{ halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

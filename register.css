@@ -1,0 +1,223 @@
+.itim-regular {
+  font-family: "Itim", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+  
+body {
+    overflow: hidden;
+    font-family: "Itim", sans-serif;
+    background-image: url("images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+     
+}
+
+.navbar {
+  display: flex;
+  position: sticky;
+  align-items: center;
+  justify-content: space-between;
+  top: 0px;
+  background-blend-mode: darken;
+  background-size: cover;
+  color: black;
+  padding: 10px 20px;
+}
+
+.navbar a {
+  color: black;
+}
+
+header {
+  font-size: 25px;
+  padding: 10px 20px;
+  color: black;
+  text-decoration: none;
+}
+
+header :link {
+  color: black;
+  text-decoration: none;
+}
+
+header :hover {
+  color: white;
+  text-decoration: none;
+}
+
+
+.nav-list {
+  display: flex;
+  list-style: none;
+}
+
+.nav-list li {
+  margin-right: 20px;
+}
+
+.nav-list li:last-child {
+  margin-right: 0;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-list li a:hover {
+  color: white;
+}
+
+.rightNav {
+  text-align: right;
+}
+
+
+div {
+  padding: 10px;
+}
+
+div input {
+  border-radius: 10px;
+  padding-right: 30px;
+  padding-top: 10 px;
+  padding-bottom: 10 px;
+}
+
+.outer {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  overflow: hidden;
+}
+
+.inner {
+  background-color: white;
+  display: flex;
+  max-width: 1000px; 
+  max-height: 650px; 
+  width: 80%; 
+  height: 75%;
+  padding: 20px; 
+  padding-left: 15px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+#submitbtt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#submitbtt input {
+    font-size: 18px;
+    color: #fff;
+    width: 100%;
+    background: #666;
+    border: none;
+    padding: 14px 15px;
+    margin-top: 15px;
+    margin: 15px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+input{
+    border: none;
+    width: 100%;
+    padding: 15px;
+    margin-right: 110px;
+    margin-inline-start: auto;
+    background-color: #f0f0f0;
+    transition: box-shadow 0.3s ease; /* เพิ่ม transition เพื่อทำให้การเปลี่ยนแปลงเป็นเรื่องอ่อนโยน */
+    border-radius: 10px; /* เพิ่มขอบมนเมื่อไม่โฟกัส */
+    box-shadow: none; /* ไม่มีเส้นขอบเมื่อไม่โฟกัส */
+}
+
+input:focus{
+    outline: none; /* ลบเส้นขอบเมื่อมีการโฟกัส */
+    box-shadow: 0 0 5px #ec75dc; /* เพิ่มเส้นขอบเมื่อมีการโฟกัส */
+    font-weight: bold;
+    transform: translateY(-7px);
+  }
+
+.form-img{
+    flex-basis: 50%;
+    width: 50%;
+    height: auto;
+    background-size: cover;
+    padding-top: 55px;
+    padding-left: 45px;
+    align-items: center;
+    display: grid;
+    float: left;
+   
+  }
+
+  .form-img img {
+    max-width: 70%; 
+    height: auto; 
+  }
+  
+
+.register-form{
+
+    outline: none;
+    /*float: right;*/
+    display:flow-root;
+    flex-basis: 50%; 
+    padding: 30px; 
+    padding-right: 60px;
+}
+
+.account {
+  color: #737373;
+}
+
+.account a {
+  color: #792dcf;
+  text-decoration: none;
+  padding: 0px 5px;
+}
+
+.account a:hover {
+  color: #4e34b6;
+  text-decoration: underline;
+}
+
+.form-control{
+  border: none !important;
+}
+
+.form-control.success input {
+  border-color: var(--succes-color);
+}
+
+.form-control.error input {
+  border-color: var(--error-color);    
+}
+
+.form-control small{
+  color: var(--error-color);
+  position: absolute;
+  visibility: hidden;
+}
+
+.form-control.error small{
+  visibility: visible;
+}
+
+.req{
+  color: #FF0000;
+}
+
+:root{
+  --succes-color: #2ecc71;;
+  --error-color: #e74c3c;
+}
+
+
